@@ -104,6 +104,18 @@ int main(int argc, char **argv)
             }
         } // Home Position CTRL
 
+        if (ctrl_flag_ == 999 && !COMMAND_SUCCEESS_){
+            session_manager->CloseSession();
+
+            router->SetActivationStatus(false);
+            transport->disconnect();
+
+            delete base;
+            delete session_manager;
+            delete router;
+            delete transport;
+        } // Quit
+
         ros::spinOnce();
         loop_rate.sleep();
     }
@@ -124,6 +136,14 @@ void keyboard_event(){
                 cout << "Move to HOME POSITION" << endl;
                 cout << " " << endl;
                 break;
+            
+            case 'q': //quit
+                ctrl_flag_ = 999;
+                COMMAND_SUCCEESS_ = false;
+                cout << " " << endl;
+                cout << "Close API Session" << endl;
+                cout << " " << endl;
+                break;  
         }
     }
 }
