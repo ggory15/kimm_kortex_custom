@@ -11,25 +11,30 @@ int main(int argc, char **argv)
     ros::Rate loop_rate(1000);
     
     int PORT = 10000;
+    string ip_address = "192.168.1.10";
+    string username = "admin";
+    string password = "admin";  
+
     ctrl_flag_ = 0;
     COMMAND_SUCCEESS_ = true;
 
     n_node.getParam("/kimm_kortex_custum_home/port_number", PORT);
+    n_node.getParam("/kimm_kortex_custum_home/ip_address", ip_address);
+    n_node.getParam("/kimm_kortex_custum_home/username", username);
+    n_node.getParam("/kimm_kortex_custum_home/password", password);
     test_string_pub_ = n_node.advertise<std_msgs::String>("my_kinova/test_string", 5);
 
     //Kinova Setting
-    auto parsed_args = ParseExampleArguments(argc, argv);
-
     // Create API objects
     auto error_callback = [](k_api::KError err){ cout << "_________ callback error _________" << err.toString(); };
     auto transport = new k_api::TransportClientTcp();
     auto router = new k_api::RouterClient(transport, error_callback);
-    transport->connect(parsed_args.ip_address, PORT);
+    transport->connect(ip_address, PORT);
 
     // Set session data connection information
     auto create_session_info = k_api::Session::CreateSessionInfo();
-    create_session_info.set_username(parsed_args.username);
-    create_session_info.set_password(parsed_args.password);
+    create_session_info.set_username(username);
+    create_session_info.set_password(password);
     create_session_info.set_session_inactivity_timeout(60000);   // (milliseconds)
     create_session_info.set_connection_inactivity_timeout(2000); // (milliseconds)
 

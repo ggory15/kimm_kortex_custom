@@ -1,5 +1,8 @@
 #include <cstdlib>
 #include "utilities/kinova_utilities.hpp"
+#include "stdio.h"
+
+using namespace std;
 
 //Helper function to parse program arguments
 ExampleArgs ParseExampleArguments(int argc, char *argv[])
