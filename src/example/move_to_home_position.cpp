@@ -49,9 +49,7 @@ int main(int argc, char **argv)
     auto base_cyclic = new k_api::BaseCyclic::BaseCyclicClient(router);
 
     while (ros::ok()){
-        std_msgs::String test_string;
-        test_string.data = "Hello World";
-        test_string_pub_.publish(test_string);
+        keyboard_event();
 
         if (ctrl_flag_ == 1 && !COMMAND_SUCCEESS_){
             COMMAND_SUCCEESS_ = true;
@@ -70,7 +68,7 @@ int main(int argc, char **argv)
             action_handle.set_identifier(0);
             for (auto action : action_list.action_list()) 
             {
-                if (action.name() == "Home") 
+                if (action.name() == "NewHome") 
                 {
                     action_handle = action.handle();
                 }
@@ -110,15 +108,59 @@ int main(int argc, char **argv)
         } // Home Position CTRL
 
         if (ctrl_flag_ == 999 && !COMMAND_SUCCEESS_){
-            session_manager->CloseSession();
+            COMMAND_SUCCEESS_ = true;
 
-            router->SetActivationStatus(false);
-            transport->disconnect();
+            auto servoingMode = k_api::Base::ServoingModeInformation();
+            servoingMode.set_servoing_mode(k_api::Base::ServoingMode::SINGLE_LEVEL_SERVOING);
+            base->SetServoingMode(servoingMode);
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-            delete base;
-            delete session_manager;
-            delete router;
-            delete transport;
+            // Move arm to ready position
+            std::cout << "Moving the arm to a safe position" << std::endl;
+            auto action_type = k_api::Base::RequestedActionType();
+            action_type.set_action_type(k_api::Base::REACH_JOINT_ANGLES);
+            auto action_list = base->ReadAllActions(action_type);
+            auto action_handle = k_api::Base::ActionHandle();
+            action_handle.set_identifier(0);
+            for (auto action : action_list.action_list()) 
+            {
+                if (action.name() == "Offposition") 
+                {
+                    action_handle = action.handle();
+                }
+            }
+
+            if (action_handle.identifier() == 0) 
+            {
+                std::cout << "Can't reach safe position, exiting" << std::endl;
+                return false;
+            } 
+            else 
+            {
+                // Connect to notification action topic
+                std::promise<k_api::Base::ActionEvent> finish_promise;
+                auto finish_future = finish_promise.get_future();
+                auto promise_notification_handle = base->OnNotificationActionTopic(
+                    create_event_listener_by_promise(finish_promise),
+                    k_api::Common::NotificationOptions()
+                );
+
+                // Execute action
+                base->ExecuteActionFromReference(action_handle);
+
+                // Wait for future value from promise
+                const auto status = finish_future.wait_for(std::chrono::seconds{20});
+                base->Unsubscribe(promise_notification_handle);
+
+                if(status != std::future_status::ready)
+                {
+                    std::cout << "Timeout on action notification wait" << std::endl;
+                }
+                const auto promise_event = finish_future.get();
+
+                std::cout << "Move to Safe Position completed" << std::endl;
+                std::cout << "Promise value : " << k_api::Base::ActionEvent_Name(promise_event) << std::endl; 
+            }
         } // Quit
 
         ros::spinOnce();
@@ -146,7 +188,7 @@ void keyboard_event(){
                 ctrl_flag_ = 999;
                 COMMAND_SUCCEESS_ = false;
                 cout << " " << endl;
-                cout << "Close API Session" << endl;
+                cout << "Move to SAFT POSITION" << endl;
                 cout << " " << endl;
                 break;  
         }

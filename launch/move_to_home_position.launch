@@ -2,7 +2,7 @@
 
   <node name="kimm_kortex_custum_home" pkg="kimm_kortex_custum" args="-keyboard" type="kimm_kortex_custum_home" output="screen">
   <param name="port_number" type="int" value="10000"/>
-  <param name="ip_address" type="string" value="192.168.1.10"/>
+  <param name="ip_address" type="string" value="192.168.50.50"/>
   <param name="username" type="string" value="admin"/>
   <param name="password" type="string" value="admin"/>
   
