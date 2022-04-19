@@ -1,0 +1,12 @@
+<launch>   
+  <arg name="pub_mode" default="false"/>
+  <node name="mujoco_ros" pkg="mujoco_ros" type="mujoco_ros" required="true" respawn="false" output="screen">
+    <param name="license" type="string" value="$(env HOME)/.mujoco/mjkey.txt" />
+    <param name="pub_mode" value="$(arg pub_mode)"/>
+    <param name="model_file" type="string" value="$(find kimm_kortex_custum)/config/kinova_arm.xml"/>    
+  </node>
+    <node name="kimm_kortex_custum_simulation" pkg="kimm_kortex_custum" args="-keyboard" type="kimm_kortex_custum_simulation" output="screen">
+  </node>
+  <param name="urdf_path" type="string" value="$(find kimm_kortex_custum)"/>
+  <param name="urdf_name" type="string" value="/config/GEN3_URDF_V12.urdf"/>
+</launch>

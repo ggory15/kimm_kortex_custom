@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build",
+  "command": "/usr/bin/g++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"kimm_kortex_custum\\\" -D_OS_UNIX -I/home/ggory15/kinova_ws/src/kimm_kortex_custom/include -I/home/ggory15/kinova_ws/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/eigen3 -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/client -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/common -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/messages -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/client_stubs -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/google  -O3 -DNDEBUG   -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/kimm_kortex_custum_simulation.dir/src/simulation/velocity_mujoco.cpp.o -c /home/ggory15/kinova_ws/src/kimm_kortex_custom/src/simulation/velocity_mujoco.cpp",
+  "file": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/src/simulation/velocity_mujoco.cpp"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build",
+  "command": "/usr/bin/g++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"kimm_kortex_custum\\\" -D_OS_UNIX -I/home/ggory15/kinova_ws/src/kimm_kortex_custom/include -I/home/ggory15/kinova_ws/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/eigen3 -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/client -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/common -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/messages -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/client_stubs -isystem /home/ggory15/kinova_ws/src/kimm_kortex_custom/thirdparty/include/google  -O3 -DNDEBUG   -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/kimm_kortex_custum_home.dir/src/example/move_to_home_position.cpp.o -c /home/ggory15/kinova_ws/src/kimm_kortex_custom/src/example/move_to_home_position.cpp",
+  "file": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/src/example/move_to_home_position.cpp"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build",
+  "command": "/usr/bin/g++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"kimm_kortex_custum\\\" -D_OS_UNIX -Dkimm_kortex_custum_EXPORTS -I/home/ggory15/kinova_ws/src/kimm_kortex_custom/include -I/home/ggory15/kinova_ws/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/eigen3  -O3 -DNDEBUG -fPIC   -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/kimm_kortex_custum.dir/src/utilities/urdf_to_pin.cpp.o -c /home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/urdf_to_pin.cpp",
+  "file": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/urdf_to_pin.cpp"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build",
+  "command": "/usr/bin/g++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"kimm_kortex_custum\\\" -D_OS_UNIX -Dkimm_kortex_custum_EXPORTS -I/home/ggory15/kinova_ws/src/kimm_kortex_custom/include -I/home/ggory15/kinova_ws/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/eigen3  -O3 -DNDEBUG -fPIC   -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/kimm_kortex_custum.dir/src/utilities/kinova_utilities.cpp.o -c /home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/kinova_utilities.cpp",
+  "file": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/kinova_utilities.cpp"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build",
+  "command": "/usr/bin/g++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"kimm_kortex_custum\\\" -D_OS_UNIX -Dkimm_kortex_custum_EXPORTS -I/home/ggory15/kinova_ws/src/kimm_kortex_custom/include -I/home/ggory15/kinova_ws/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/eigen3  -O3 -DNDEBUG -fPIC   -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/kimm_kortex_custum.dir/src/utilities/math_functions.cpp.o -c /home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/math_functions.cpp",
+  "file": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/src/utilities/math_functions.cpp"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gmock_main.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock/gtest",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /usr/src/googletest/googletest/src/gtest_main.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock/gtest",
+  "command": "/usr/bin/g++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -O3 -DNDEBUG -fPIC    -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -Ofast -std=gnu++14 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+}
+]

@@ -1,0 +1,1 @@
+/usr/bin/g++ -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock/gtest/src -Wl,-rpath,/home/ggory15/kinova_ws/src/kimm_kortex_custom/build/gtest/googlemock/gtest/src -lpthread 

@@ -25,10 +25,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   roslib
+  mujoco_ros
 )
 
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
+find_package(pinocchio REQUIRED)
 
 catkin_package(
   LIBRARIES ${PROJECT_NAME}
@@ -40,6 +42,7 @@ catkin_package(
     pluginlib
     realtime_tools
     roscpp
+    mujoco_ros
   DEPENDS system_lib
 )
 link_directories(${Boost_LIBRARY_DIR})
@@ -58,12 +61,14 @@ include_directories(
 )
 
 SET(${PROJECT_NAME}_HEADERS
-  include/utilities/pin_to_urdf.hpp
+  include/utilities/urdf_to_pin.hpp
   include/utilities/kinova_utilities.hpp
+  include/utilities/math_functions.hpp
 )
 SET(${PROJECT_NAME}_SOURCES
-  src/utilities/pin_to_urdf.cpp
+  src/utilities/urdf_to_pin.cpp
   src/utilities/kinova_utilities.cpp
+  src/utilities/math_functions.cpp
 )
 
 
@@ -72,15 +77,25 @@ ADD_SOURCE_GROUP(${PROJECT_NAME}_SOURCES)
 ADD_LIBRARY(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
 # add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_generate_messages_cpp )
 
-
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} SYSTEM PUBLIC $<INSTALL_INTERFACE:include> ${EIGEN3_INCLUDE_DIR})
 
-add_executable(${PROJECT_NAME}_home src/example/move_to_home_position.cpp)
-set(EXTRA_LIB ${EXTRA_LIB} ${KORTEX_LIBRARY_DIR}/release/libKortexApiCpp.a)
-set(EXTRA_INC ${EXTRA_INC} ${KORTEX_INCLUDE_DIRS} ${KORTEX_INCLUDE_DIRS}/client ${KORTEX_INCLUDE_DIRS}/common ${KORTEX_INCLUDE_DIRS}/messages ${KORTEX_INCLUDE_DIRS}/client_stubs ${KORTEX_INCLUDE_DIRS}/google)
 
+## exe for example
+add_executable(${PROJECT_NAME}_home src/example/move_to_home_position.cpp)
+set(EXTRA_LIB ${EXTRA_LIB} ${KORTEX_LIBRARY_DIR}/release/libKortexApiCpp.a ${pinocchio_LIBRARIES})
+set(EXTRA_INC ${EXTRA_INC} ${KORTEX_INCLUDE_DIRS} ${KORTEX_INCLUDE_DIRS}/client ${KORTEX_INCLUDE_DIRS}/common ${KORTEX_INCLUDE_DIRS}/messages ${KORTEX_INCLUDE_DIRS}/client_stubs ${KORTEX_INCLUDE_DIRS}/google)
 target_link_libraries(${PROJECT_NAME}_home ${PROJECT_NAME} ${catkin_LIBRARIES} ${EXTRA_LIB})
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME}_home SYSTEM PUBLIC $<INSTALL_INTERFACE:include> ${EIGEN3_INCLUDE_DIR} ${EXTRA_INC})
+
+## exe for simulation
+add_executable(${PROJECT_NAME}_simulation src/simulation/velocity_mujoco.cpp)
+set(EXTRA_LIB ${EXTRA_LIB} ${KORTEX_LIBRARY_DIR}/release/libKortexApiCpp.a)
+set(EXTRA_INC ${EXTRA_INC} ${KORTEX_INCLUDE_DIRS} ${KORTEX_INCLUDE_DIRS}/client ${KORTEX_INCLUDE_DIRS}/common ${KORTEX_INCLUDE_DIRS}/messages ${KORTEX_INCLUDE_DIRS}/client_stubs ${KORTEX_INCLUDE_DIRS}/google)
+target_link_libraries(${PROJECT_NAME}_simulation ${PROJECT_NAME} ${catkin_LIBRARIES} ${EXTRA_LIB})
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME}_simulation SYSTEM PUBLIC $<INSTALL_INTERFACE:include> ${EIGEN3_INCLUDE_DIR} ${EXTRA_INC})
+
+
+
 # add_dependencies(${PROJECT_NAME}_home ${PROJECT_NAME}_gencpp  )
 
 #############
@@ -93,6 +108,9 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+install(DIRECTORY config
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 

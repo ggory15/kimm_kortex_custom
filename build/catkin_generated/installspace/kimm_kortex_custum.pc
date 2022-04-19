@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: kimm_kortex_custum
+Description: Description of kimm_kortex_custum
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib -lkimm_kortex_custum
+Requires: controller_interface dynamic_reconfigure geometry_msgs hardware_interface pluginlib realtime_tools roscpp mujoco_ros
