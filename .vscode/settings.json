@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "future": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "chrono": "cpp"
+    }
+}

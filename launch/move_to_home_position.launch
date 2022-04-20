@@ -1,10 +1,43 @@
 <launch>   
+  <arg name="only_kinova"              default="true"/>
 
   <node name="kimm_kortex_custum_home" pkg="kimm_kortex_custum" args="-keyboard" type="kimm_kortex_custum_home" output="screen">
-  <param name="port_number" type="int" value="10000"/>
-  <param name="ip_address" type="string" value="192.168.50.50"/>
-  <param name="username" type="string" value="admin"/>
-  <param name="password" type="string" value="admin"/>
-  
+    <param name="port_number" type="int" value="10000"/>
+    <param name="ip_address" type="string" value="192.168.1.10"/>
+    <param name="username" type="string" value="admin"/>
+    <param name="password" type="string" value="admin"/>
   </node>
+
+  <param name="urdf_path" type="string" value="$(find spot_gazebo_description)" />
+  <param name="urdf_name" type="string" value="/urdf/kinova_only.urdf" if="$(arg only_kinova)"/>
+  <param name="urdf_name" type="string" value="/urdf/spot_kinova_simul.urdf" unless="$(arg only_kinova)"/>
+  <param name="iskinovaonly" type="bool" value="true" if="$(arg only_kinova)"/>
+  <param name="iskinovaonly" type="bool" value="false" unless="$(arg only_kinova)"/>
+
+  <arg if="$(arg only_kinova)"  name="description_file" value="$(find spot_gazebo_description)/urdf/kinova_only.urdf"/>
+  <arg unless="$(arg only_kinova)" name="description_file" value="$(find spot_gazebo_description)/urdf/spot_kinova_simul.urdf"/>
+    
+  <include file="$(find champ_description)/launch/description.launch">
+      <arg name="description_file" value="$(arg description_file)"/>
+  </include>
+
+  <arg if="$(arg only_kinova)"  name="rviz_ref_frame" value="base_link"/>
+  <arg unless="$(arg only_kinova)" name="rviz_ref_frame" value="odom"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz"
+          args="-d $(find kimm_kortex_custum)/rviz/urdf_viewer.rviz -f $(arg rviz_ref_frame)"
+    output="screen"/>
+
+  <!-- <node name="arm_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <param name="use_tf_static"     value="true"/>
+        <param name="publish_frequency" value="1000"/>
+        <remap from="joint_states"     to="arm/joint_states" />
+  </node> -->
+  <node name="arm_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <param name="use_tf_static"     value="false"/>
+        <param name="publish_frequency" value="200"/>
+        <param name="ignore_timestamp" value="true"/>
+        <remap from="joint_states"     to="arm/joint_states" />
+  </node>
+
 </launch>
